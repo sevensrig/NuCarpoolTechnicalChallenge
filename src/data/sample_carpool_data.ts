@@ -8,7 +8,7 @@ interface Match {
     endDistanceDelta: number
 }
 
-const matchList: Match[] = [
+export const matchList: Match[] = [
     {
         firstName: "Sally",
         lastName: "Ride",
