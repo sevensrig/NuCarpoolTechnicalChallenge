@@ -14,7 +14,8 @@ function MatchingTiles() {
     }
 
     return(
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl mx-auto border border-gray-200">
+        
+        <div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl mx-auto border border-gray-200 h-[500px] flex flex-col justify-between">
             <p className="text-xl font-bold text-black">
                 <span className="text-red-600">Name: </span>
                 {`${currPotentialMatch.firstName} ${currPotentialMatch.lastName}`}
@@ -44,13 +45,13 @@ function MatchingTiles() {
                 <button 
                     onClick={handleLikeButton} 
                     className="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md 
-                    hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    hover:bg-red-700 focus:outline-solid focus:ring-4    focus:ring-black">
                     Like
                 </button>
                 <button 
                     onClick={handleDislikeButton} 
                     className="px-6 py-2 bg-black text-white font-semibold rounded-lg shadow-md 
-                    hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black">
+                    hover:bg-gray-800 focus:outline-solid focus:ring-4 focus:ring-red-600">
                     Dislike
                 </button>
             </div>
