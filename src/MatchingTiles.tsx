@@ -13,9 +13,19 @@ function MatchingTiles() {
         setIndex(() => index + 1)
     }
 
+    if (!currPotentialMatch) {
+        return (
+            <div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl 
+            mx-auto border border-gray-200 h-[500px] flex flex-col justify-center items-center">
+                <p className="text-xl font-bold text-black">No more matches! Please check again later.</p>
+            </div>
+        );
+    }
+
     return(
-        
-        <div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl mx-auto border border-gray-200 h-[500px] flex flex-col justify-between">
+
+        <div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl 
+        mx-auto border border-gray-200 h-[500px] flex flex-col justify-between">
             <p className="text-xl font-bold text-black">
                 <span className="text-red-600">Name: </span>
                 {`${currPotentialMatch.firstName} ${currPotentialMatch.lastName}`}
