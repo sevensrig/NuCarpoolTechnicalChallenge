@@ -1,5 +1,7 @@
 import { matchList } from './data/sample_carpool_data'
 import { useState } from 'react';
+import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function MatchingTiles() {
     const [ index, setIndex ] = useState(0)
@@ -58,13 +60,15 @@ function MatchingTiles() {
                 <button 
                     onClick={handleLikeButton} 
                     className="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md 
-                    hover:bg-red-700 focus:outline-solid focus:ring-4    focus:ring-black">
-                    Like
+                    hover:bg-red-700 focus:outline-solid focus:ring-4 focus:ring-black">
+                        <FontAwesomeIcon icon = {faThumbsUp} className='mr-1'/>
+                    Like 
                 </button>
                 <button 
                     onClick={handleDislikeButton} 
                     className="px-6 py-2 bg-black text-white font-semibold rounded-lg shadow-md 
                     hover:bg-gray-800 focus:outline-solid focus:ring-4 focus:ring-red-600">
+                        <FontAwesomeIcon icon = {faThumbsDown} className='mr-1'/>
                     Dislike
                 </button>
             </div>
