@@ -2,10 +2,12 @@ import { matchList } from './data/sample_carpool_data'
 import { useState } from 'react';
 import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AnimatePresence, motion } from 'motion/react';
 
 function MatchingTiles() {
     const [ index, setIndex ] = useState(0)
     const [ currPotentialMatch, setCurrPotentialMatch ] = useState(matchList[0])
+    const [ direction, setDirection ] = useState('left')
 
     const goToNextCard = () => {
         setCurrPotentialMatch(matchList[index + 1])
@@ -13,9 +15,11 @@ function MatchingTiles() {
     }
 
     function handleLikeButton() {
+        setDirection('left')
         goToNextCard()
     }
     function handleDislikeButton() {
+        setDirection('right')
         goToNextCard()
     }
 
@@ -29,8 +33,15 @@ function MatchingTiles() {
     }
 
     return(
-        <div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl 
-        mx-auto border border-gray-200 h-[500px] flex flex-col justify-between">
+        <AnimatePresence >
+        <motion.div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl 
+        mx-auto border border-gray-200 h-[500px] flex flex-col justify-between"
+        key = {index}
+        initial={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: [ 0, direction === 'right' ? 500 : direction === 'left' ? -500 : 0 ]}}
+        animate={{ opacity: 1, x: [direction === 'right' ? 500 : direction === 'left' ? -500 : 0, 0] }}
+        transition={{ type: 'spring', stiffness: 100, damping: 30, times: [0, 0.5, 1] }}
+        >
             <p className="text-xl font-bold text-black">
                 <span className="text-red-600">Name: </span>
                 {`${currPotentialMatch.firstName} ${currPotentialMatch.lastName}`}
@@ -72,8 +83,8 @@ function MatchingTiles() {
                     Dislike
                 </button>
             </div>
-        </div>
-
+        </motion.div>
+        </AnimatePresence>
         
     );
 }
