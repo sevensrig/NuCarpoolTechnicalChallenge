@@ -4,13 +4,17 @@ import { useState } from 'react';
 function MatchingTiles() {
     const [ index, setIndex ] = useState(0)
     const [ currPotentialMatch, setCurrPotentialMatch ] = useState(matchList[0])
-    function handleLikeButton() {
+
+    const goToNextCard = () => {
         setCurrPotentialMatch(matchList[index + 1])
         setIndex(() => index + 1)
     }
+
+    function handleLikeButton() {
+        goToNextCard()
+    }
     function handleDislikeButton() {
-        setCurrPotentialMatch(matchList[index + 1])
-        setIndex(() => index + 1)
+        goToNextCard()
     }
 
     if (!currPotentialMatch) {
@@ -23,7 +27,6 @@ function MatchingTiles() {
     }
 
     return(
-
         <div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl 
         mx-auto border border-gray-200 h-[500px] flex flex-col justify-between">
             <p className="text-xl font-bold text-black">
