@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'motion/react';
 function MatchingTiles() {
     const [ index, setIndex ] = useState(0)
     const [ currPotentialMatch, setCurrPotentialMatch ] = useState(matchList[0])
-    const [ direction, setDirection ] = useState('left')
+    const [ direction, setDirection ] = useState('')
 
     const goToNextCard = () => {
         setCurrPotentialMatch(matchList[index + 1])
@@ -33,7 +33,7 @@ function MatchingTiles() {
     }
 
     return(
-        <AnimatePresence >
+        <AnimatePresence mode = 'wait'>
         <motion.div className="bg-white p-6 mt-3 rounded-lg shadow-lg max-w-xl 
         mx-auto border border-gray-200 h-[500px] flex flex-col justify-between"
         key = {index}
